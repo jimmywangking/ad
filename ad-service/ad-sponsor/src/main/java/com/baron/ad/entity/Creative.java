@@ -49,7 +49,7 @@ public class Creative {
     private Integer auditStatue;
 
     @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    private Long userId;
 
     @Column(name = "url", nullable = false)
     private String url;

@@ -9,12 +9,14 @@ import com.baron.ad.utils.CommonUtils;
 import com.baron.ad.vo.CreateUserRequest;
 import com.baron.ad.vo.CreateUserResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /***
  @package com.baron.ad.service.impl
  @author Baron
  @create 2020-08-30-11:35 AM
  */
+@Service
 public class UserServiceImpl implements IUserService {
 
     private final AdUserRepository adUserRepository;
