@@ -1,0 +1,64 @@
+package com.baron.ad.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Date;
+
+/***
+ @package com.baron.ad.entity
+ @author Baron
+ @create 2020-08-28-8:19 PM
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "ad_creative")
+public class Creative {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "type", nullable = false)
+    private Integer type;
+
+    @Column(name = "material_type", nullable = false)
+    private Integer materialType;
+
+    @Column(name = "height", nullable = false)
+    private Integer height;
+
+    @Column(name = "weight", nullable = false)
+    private Integer weight;
+
+    @Column(name = "size", nullable = false)
+    private Long size;
+
+    @Column(name = "duration", nullable = false)
+    private Integer duration;
+
+    @Column(name = "audit_status", nullable = false)
+    private Integer auditStatue;
+
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;
+
+    @Column(name = "url", nullable = false)
+    private String url;
+
+    @Column(name = "create_time", nullable = false)
+    private Date createTime;
+
+    @Column(name = "update_time", nullable = false)
+    private Date updateTime;
+
+
+}
