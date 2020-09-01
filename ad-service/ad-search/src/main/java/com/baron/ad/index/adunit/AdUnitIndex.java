@@ -21,7 +21,7 @@ public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
         objectMap = new ConcurrentHashMap<>();
     }
     @Override
-    public AdUnitObject get(Long key) {
+    public AdUnitObject get(Object key) {
         return objectMap.get(key);
     }
 

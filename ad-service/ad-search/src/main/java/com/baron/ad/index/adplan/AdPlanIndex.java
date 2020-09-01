@@ -22,7 +22,7 @@ public class AdPlanIndex implements IndexAware<Long, AdPlanObject> {
     }
 
     @Override
-    public AdPlanObject get(Long key) {
+    public AdPlanObject get(Object key) {
         return objectMap.get(key);
     }
 

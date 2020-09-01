@@ -1,0 +1,66 @@
+package com.baron.ad.index.district;
+
+import com.baron.ad.index.IndexAware;
+import com.baron.ad.utils.CommonUtils;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListSet;
+
+/***
+ @package com.baron.ad.index.district
+ @author Baron
+ @create 2020-08-31-3:33 PM
+ */
+@Slf4j
+@Component
+public class UnitDistrictIndex implements IndexAware<String, Set<Long>> {
+
+    private static Map<String, Set<Long>> districtUnitMap;
+    private static Map<Long, Set<String>> unitDistrictMap;
+    static {
+        districtUnitMap = new ConcurrentHashMap<>();
+        unitDistrictMap = new ConcurrentHashMap<>();
+    }
+    @Override
+    public Set<Long> get(String key) {
+        log.info("UnitDistrictIndex , start get: {}", districtUnitMap);
+        return districtUnitMap.get(key);
+    }
+
+    @Override
+    public void add(String key, Set<Long> value) {
+        log.info("UnitDistrictIndex , start add: {}", districtUnitMap);
+        Set<Long> unitIds = CommonUtils.getOrCreate(key, districtUnitMap, ConcurrentSkipListSet::new);
+        unitIds.addAll(value);
+        for (Long unitId : value){
+            Set<String> districts = CommonUtils.getOrCreate(unitId, unitDistrictMap, ConcurrentSkipListSet::new);
+            districts.add(key);
+        }
+        log.info("UnitDistrictIndex , end add: {}", districtUnitMap);
+
+    }
+
+    @Override
+    public void update(String key, Set<Long> value) {
+
+        log.error("UnitDistrictIndex cannot support update");
+    }
+
+    @Override
+    public void delete(String key, Set<Long> value) {
+
+        log.info("UnitDistrictIndex , start delete: {}", districtUnitMap);
+        Set<Long> unitIds = CommonUtils.getOrCreate(key, districtUnitMap, ConcurrentSkipListSet::new);
+        unitIds.removeAll(value);
+        for (Long unitId : value){
+            Set<String> districts = CommonUtils.getOrCreate(unitId, unitDistrictMap, ConcurrentSkipListSet::new);
+            districts.remove(key);
+        }
+        log.info("UnitDistrictIndex , end delete: {}", districtUnitMap);
+
+    }
+}
