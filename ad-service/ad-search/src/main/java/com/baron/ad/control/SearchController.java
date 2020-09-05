@@ -8,6 +8,7 @@ import com.baron.ad.client.vo.AdPlanGetRequest;
 import com.baron.ad.vo.CommonResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,8 @@ public class SearchController {
     private final RestTemplate restTemplate;
     private final SponsorClient sponsorClient;
 
-    public SearchController(RestTemplate restTemplate, SponsorClient sponsorClient) {
+    @Autowired
+    public SearchController(RestTemplate restTemplate, @Qualifier("eureka-client-ad-sponsor") SponsorClient sponsorClient) {
         this.restTemplate = restTemplate;
         this.sponsorClient = sponsorClient;
     }

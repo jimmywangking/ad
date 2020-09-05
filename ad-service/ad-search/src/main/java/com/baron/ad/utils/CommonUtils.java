@@ -15,4 +15,14 @@ public class CommonUtils {
         return map.computeIfAbsent(key, k -> factory.get());
     }
 
+    //拼接 多个字符串
+    public static String stringConcat(String... args){
+        StringBuilder result =  new StringBuilder();
+        for (String arg : args){
+            result.append(arg).append("-");
+        }
+        result.deleteCharAt(result.length() - 1);
+        return result.toString();
+    }
+
 }

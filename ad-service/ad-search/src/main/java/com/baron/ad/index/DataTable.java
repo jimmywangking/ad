@@ -33,7 +33,9 @@ public class DataTable implements ApplicationContextAware, PriorityOrdered {
     }
 
 //    DataTable.of(CreativeIndex.class);
-    private static <T> T of (Class<T> clazz) {
+
+    @SuppressWarnings("all")
+    public static <T> T of (Class<T> clazz) {
         T instance  = (T) dataTableMap.get(clazz);
         if (null != instance){
             return instance;
