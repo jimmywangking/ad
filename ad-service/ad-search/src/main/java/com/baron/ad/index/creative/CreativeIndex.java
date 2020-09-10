@@ -2,10 +2,10 @@ package com.baron.ad.index.creative;
 
 import com.baron.ad.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /***
@@ -20,6 +20,19 @@ public class CreativeIndex implements IndexAware<Long, CreativeObject> {
     private static Map<Long, CreativeObject> creativeMap;
     static {
         creativeMap = new ConcurrentHashMap<>();
+    }
+
+    public List<CreativeObject> fetch(Collection<Long> adIds){
+        if (CollectionUtils.isEmpty(adIds)) {
+            return Collections.emptyList();
+        }
+
+        List<CreativeObject> result = new ArrayList<>();
+        adIds.forEach(u -> {CreativeObject Object = get(u);
+        if (null == Object) {log.error("CreativeObject not found {}", u); return ;}
+        result.add(Object);});
+
+        return result;
     }
 
     @Override

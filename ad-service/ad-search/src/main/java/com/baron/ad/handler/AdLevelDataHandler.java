@@ -17,7 +17,6 @@ import com.baron.ad.index.it.UnitItIndex;
 import com.baron.ad.index.keyword.UnitKeywordIndex;
 import com.baron.ad.mysql.constant.OpType;
 import com.baron.ad.utils.CommonUtils;
-import com.sun.org.apache.xerces.internal.dom.PSVIAttrNSImpl;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Collections;
@@ -54,7 +53,7 @@ public class AdLevelDataHandler {
             log.error("handleLevel3 found AdPlanObject error: {}", unitTable.getPlanId());
             return;
         }
-        AdUnitObject unitObject = new AdUnitObject(unitTable.getUnitID(), unitTable.getUnitStatus(), unitTable.getPositionType(), unitTable.getPlanId(),
+        AdUnitObject unitObject = new AdUnitObject(unitTable.getUnitid(), unitTable.getUnitStatus(), unitTable.getPositionType(), unitTable.getPlanId(),
                 planObject);
         handleBinLogEvent(DataTable.of(AdUnitIndex.class), unitObject.getUnitId(), unitObject, type);
     }

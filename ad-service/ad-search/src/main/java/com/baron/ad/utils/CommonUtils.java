@@ -1,5 +1,13 @@
 package com.baron.ad.utils;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.time.DateUtils;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -8,6 +16,7 @@ import java.util.function.Supplier;
  @author Baron
  @create 2020-08-31-10:05 AM
  */
+@Slf4j
 public class CommonUtils {
 
     //范型 当key在map里不存在的时候，通过一个Supplier的对象，返回一个新的V通过factory.get()获得
@@ -23,6 +32,18 @@ public class CommonUtils {
         }
         result.deleteCharAt(result.length() - 1);
         return result.toString();
+    }
+
+    // Tue Jan 05 22:50:02 CST 2020
+    public static Date parseStringDate(String dateString){
+
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+            return DateUtils.addHours(dateFormat.parse(dateString),-8);
+        } catch (ParseException ex){
+            log.error("parseStringDate error :{}", dateString);
+            return null;
+        }
     }
 
 }

@@ -3,8 +3,9 @@ package com.baron.ad.index.adunit;
 import com.baron.ad.index.IndexAware;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /***
@@ -20,8 +21,34 @@ public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
     static {
         objectMap = new ConcurrentHashMap<>();
     }
+
+
+    public Set<Long> match(Integer positionType) {
+        Set<Long> adUnitIds = new HashSet<>();
+        objectMap.forEach((k, v) -> {if  (AdUnitObject.isAdSlotTypeOK(positionType, v.getPositionType())){adUnitIds.add(k);}});
+        return adUnitIds;
+    }
+
+
+    public List<AdUnitObject> fetch(Collection<Long> adUnitIds) {
+        if (CollectionUtils.isEmpty(adUnitIds)) {
+            return Collections.emptyList();
+        }
+        List<AdUnitObject> result = new ArrayList<>();
+        adUnitIds.forEach(u -> {
+            AdUnitObject object = get(u);
+            if (object == null) {
+                log.error("AdUnitObject not found: {}", u);
+                return;
+            }
+            result.add(object);
+        });
+            return result;
+    }
+
+
     @Override
-    public AdUnitObject get(Object key) {
+    public AdUnitObject get(Long key) {
         return objectMap.get(key);
     }
 
@@ -29,7 +56,7 @@ public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
     public void add(Long key, AdUnitObject value) {
         log.info("before add: {}", objectMap);
         objectMap.put(key, value);
-        log.info(("after add: {}", objectMap));
+        log.info("after add: {}", objectMap);
 
     }
 
@@ -38,7 +65,7 @@ public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
         log.info("before update: {}", objectMap);
         AdUnitObject oldObject = objectMap.get(key);
         if (null == oldObject){
-            objectMap.put(key, value)
+            objectMap.put(key, value);
         }else{
 //            update(key, value);
             oldObject.update(value);
@@ -49,7 +76,7 @@ public class AdUnitIndex implements IndexAware<Long, AdUnitObject> {
 
     @Override
     public void delete(Long key, AdUnitObject value) {
-        log.info(("beofre delete: {}", objectMap));
+        log.info("beofre delete: {}", objectMap);
         objectMap.remove(key);
         log.info("after delete: {}", objectMap);
     }

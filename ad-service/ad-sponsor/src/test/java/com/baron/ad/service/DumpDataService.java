@@ -19,19 +19,16 @@ import com.baron.ad.entity.unit_condition.AdUnitDistrict;
 import com.baron.ad.entity.unit_condition.AdUnitIt;
 import com.baron.ad.entity.unit_condition.AdUnitKeyword;
 import com.baron.ad.entity.unit_condition.CreativeUnit;
-import javassist.compiler.KeywordTable;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -99,7 +96,7 @@ public class DumpDataService {
             return;
         }
         List<AdUnitTable> unitTables = new ArrayList<>();
-        unitTables.forEach(u -> unitTables.add(new AdUnitTable(u.getUnitID(), u.getUnitStatus(), u.getPositionType(), u.getPlanId())));
+        unitTables.forEach(u -> unitTables.add(new AdUnitTable(u.getUnitid(), u.getUnitStatus(), u.getPositionType(), u.getPlanId())));
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (AdUnitTable unitTable : unitTables) {

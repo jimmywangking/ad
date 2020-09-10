@@ -2,16 +2,12 @@ package com.baron.ad.mysql;
 
 import com.baron.ad.mysql.listener.AggregationListener;
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
-import com.sun.tools.javadoc.Start;
-import jdk.nashorn.api.scripting.ScriptUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-
-import static sun.jvm.hotspot.runtime.PerfMemory.start;
 
 /***
  @package com.baron.ad.mysql

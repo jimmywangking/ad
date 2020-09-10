@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AdUnitTable {
 
-    private Long unitID;
+    private Long unitid;
     private Integer unitStatus;
     private Integer positionType;
     private Long planId;
