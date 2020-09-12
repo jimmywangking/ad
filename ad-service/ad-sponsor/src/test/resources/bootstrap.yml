@@ -14,7 +14,7 @@ spring:
       hibernate.format_sql: true
     open-in-view: false
   datasource:
-    url: jdbc:mysql://localhost:3306/ad_data?autoReconnect=true
+    url: jdbc:mysql://localhost:3307/ad_data
     username: root
     password: root
     tomcat:
@@ -26,3 +26,4 @@ eureka:
   client:
     service-url:
       defaultZone: http://server1:8000/eureka/
+    enabled: false

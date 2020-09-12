@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  @create 2020-09-05-2:47 PM
  */
 @Component
-@DependsOn("DataTable")
+@DependsOn("dataTable")
 @Slf4j
 public class IndexFileLoader {
 

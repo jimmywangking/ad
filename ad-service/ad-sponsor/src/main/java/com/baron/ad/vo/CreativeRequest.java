@@ -36,7 +36,7 @@ public class CreativeRequest {
         creative.setWeight(weight);
         creative.setSize(size);
         creative.setDuration(duration);
-        creative.setAuditStatue(CommonStatus.VALID.getStatus());
+        creative.setAuditStatus(CommonStatus.VALID.getStatus());
         creative.setUserId(userId);
         creative.setUrl(url);
         creative.setCreateTime(new Date());

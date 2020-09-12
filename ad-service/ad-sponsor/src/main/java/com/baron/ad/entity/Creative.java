@@ -36,7 +36,7 @@ public class Creative {
     @Column(name = "height", nullable = false)
     private Integer height;
 
-    @Column(name = "weight", nullable = false)
+    @Column(name = "width", nullable = false)
     private Integer weight;
 
     @Column(name = "size", nullable = false)
@@ -46,7 +46,7 @@ public class Creative {
     private Integer duration;
 
     @Column(name = "audit_status", nullable = false)
-    private Integer auditStatue;
+    private Integer auditStatus;
 
     @Column(name = "user_id", nullable = false)
     private Long userId;

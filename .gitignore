@@ -1,5 +1,4 @@
-# .gitignore for maven
-target/
+:qqqqqq:q:target/
 *.releaseBackup
 
 # web application files

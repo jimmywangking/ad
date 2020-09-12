@@ -33,7 +33,7 @@ spring:
     name: ad-eureka
   profiles: server2
 server:
-  port: 8000
+  port: 8001
 eureka:
   instance:
     hostname: server2
@@ -48,7 +48,7 @@ spring:
     name: ad-eureka
   profiles: server3
 server:
-  port: 8000
+  port: 8002
 eureka:
   instance:
     hostname: server3

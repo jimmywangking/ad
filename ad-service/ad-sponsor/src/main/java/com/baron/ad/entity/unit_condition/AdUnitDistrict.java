@@ -15,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ad_unit_it")
+@Table(name = "ad_unit_district")
 public class AdUnitDistrict {
 
     @Id
@@ -33,5 +33,8 @@ public class AdUnitDistrict {
     private String city;
 
     public AdUnitDistrict(Long unitId, String province, String city) {
+        this.unitId = unitId;
+        this.province = province;
+        this.city = city;
     }
 }

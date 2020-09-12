@@ -96,7 +96,7 @@ public class DumpDataService {
             return;
         }
         List<AdUnitTable> unitTables = new ArrayList<>();
-        unitTables.forEach(u -> unitTables.add(new AdUnitTable(u.getUnitid(), u.getUnitStatus(), u.getPositionType(), u.getPlanId())));
+        adUnits.forEach(u -> unitTables.add(new AdUnitTable(u.getId(), u.getUnitStatus(), u.getPositionType(), u.getPlanId())));
         Path path = Paths.get(fileName);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
             for (AdUnitTable unitTable : unitTables) {
@@ -114,8 +114,8 @@ public class DumpDataService {
         List<Creative> creatives = creativeRepository.findAll();
         if (CollectionUtils.isEmpty(creatives)){return;}
         List<AdCreativeTable> creativeTables = new ArrayList<>();
-        creativeTables.forEach(c -> creativeTables.add(new AdCreativeTable(c.getAdId(), c.getName(), c.getType(), c.getMaterialType(),
-                c.getHeight(), c.getWeight(), c.getSize(), c.getAuditStatus(), c.getAdUrl())));
+        creatives.forEach(c -> creativeTables.add(new AdCreativeTable(c.getId(), c.getName(), c.getType(), c.getMaterialType(),
+                c.getHeight(), c.getWeight(), c.getSize(), c.getAuditStatus(), c.getUrl())));
         Path path = Paths.get(fileName);
         try {
             BufferedWriter writer = Files.newBufferedWriter(path);
@@ -134,7 +134,7 @@ public class DumpDataService {
         List<AdUnitKeyword> keywords = keywordRepository.findAll();
         if (CollectionUtils.isEmpty(keywords)){return;}
         List<AdUnitKeywordTable> keywordTables = new ArrayList<>();
-        keywordTables.forEach(k -> keywordTables.add(new AdUnitKeywordTable(k.getUnitId(), k.getKeyword())));
+        keywords.forEach(k -> keywordTables.add(new AdUnitKeywordTable(k.getUnitId(), k.getKeyword())));
 
         Path path = Paths.get(fineName);
         try {
@@ -154,7 +154,7 @@ public class DumpDataService {
         List<CreativeUnit> creativeUnits = creativeUnitRepository.findAll();
         if (CollectionUtils.isEmpty(creativeUnits)){return;}
         List<AdCreativeUnitTable> creativeUnitTables = new ArrayList<>();
-        creativeUnitTables.forEach(c -> creativeUnitTables.add(new AdCreativeUnitTable(c.getAdId(), c.getCreativeId(), c.getUnitId())));
+        creativeUnits.forEach(c -> creativeUnitTables.add(new AdCreativeUnitTable(c.getId(), c.getCreativeId(), c.getUnitId())));
         Path path = Paths.get(fileName);
         try {
             BufferedWriter writer = Files.newBufferedWriter(path);
@@ -173,7 +173,7 @@ public class DumpDataService {
         List<AdUnitIt> unitIts = itRepository.findAll();
         if (CollectionUtils.isEmpty(unitIts)){return;}
         List<AdUnitItTable> unitItTables = new ArrayList<>();
-        unitItTables.forEach(i -> unitItTables.add(new AdUnitItTable(i.getUnitId(), i.getItTag())));
+        unitIts.forEach(i -> unitItTables.add(new AdUnitItTable(i.getUnitId(), i.getItTag())));
 
         Path path = Paths.get(fileName);
         try {
@@ -193,7 +193,7 @@ public class DumpDataService {
         List<AdUnitDistrict> districts = districtRepository.findAll();
         if (CollectionUtils.isEmpty(districts)){return;}
         List<AdUnitDistrictTable> districtTables = new ArrayList<>();
-        districtTables.forEach(d -> districtTables.add(new AdUnitDistrictTable(d.getUnitId(), d.getProvince(), d.getCity())));
+        districts.forEach(d -> districtTables.add(new AdUnitDistrictTable(d.getUnitId(), d.getProvince(), d.getCity())));
         Path path = Paths.get(fileName);
         try {
             BufferedWriter writer = Files.newBufferedWriter(path);
