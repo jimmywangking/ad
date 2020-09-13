@@ -1,11 +1,12 @@
 package com.baron.ad.sender.index;
 
 import com.alibaba.fastjson.JSON;
+import com.baron.ad.constant.Constant;
 import com.baron.ad.dump.table.*;
 import com.baron.ad.handler.AdLevelDataHandler;
 import com.baron.ad.index.enums.DataLevel;
-import com.baron.ad.mysql.constant.Constant;
-import com.baron.ad.mysql.dto.MySqlRowData;
+import com.baron.ad.constant.Constant;
+import com.baron.ad.dto.MySqlRowData;
 import com.baron.ad.sender.ISender;
 import com.baron.ad.utils.CommonUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +22,7 @@ import java.util.Map;
  @create 2020-09-05-11:08 PM
  */
 @Slf4j
-@Component("indexSender")
+@Component
 public class IndexSender implements ISender {
     @Override
     public void sender(MySqlRowData rowData) {

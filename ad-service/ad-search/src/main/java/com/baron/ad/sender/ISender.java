@@ -1,6 +1,6 @@
 package com.baron.ad.sender;
 
-import com.baron.ad.mysql.dto.MySqlRowData;
+import com.baron.ad.dto.MySqlRowData;
 
 /***
  @package com.baron.ad
