@@ -14,6 +14,5 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 public class BinlogKafkaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(BinlogKafkaApplication.class, args);
-    }
+     }
 }

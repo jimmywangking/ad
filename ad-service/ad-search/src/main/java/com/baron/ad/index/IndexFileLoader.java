@@ -1,11 +1,12 @@
 package com.baron.ad.index;
 
 import com.alibaba.fastjson.JSON;
+import com.baron.ad.constant.OpType;
 import com.baron.ad.dump.DConstant;
 import com.baron.ad.dump.table.*;
 import com.baron.ad.exception.AdException;
 import com.baron.ad.handler.AdLevelDataHandler;
-import com.baron.ad.mysql.constant.OpType;
+import com.baron.ad.constant.OpType;
 import com.sun.javafx.binding.StringFormatter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
